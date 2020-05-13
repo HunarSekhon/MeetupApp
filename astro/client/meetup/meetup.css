@@ -1,0 +1,175 @@
+.map-container {
+    width: 100%;
+    /*max-width: 100%;*/
+    height: 400px;
+}
+
+.meetup-cards-container{
+
+    margin-left: 230px;
+    padding: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+}
+
+.pulse-no {
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+    animation: pulse 5s infinite;
+}
+
+.pulse-nofast{
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+    animation: pulse 2.5s infinite;
+}
+
+.meetup-cards-details{
+    padding:7px;
+}
+
+.cardlink{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.cardlinkDelete{
+    color: indianred
+}
+
+.cardlink:hover{
+   color: black;
+    cursor: pointer;
+}
+
+.box-shadow:after {
+    content:"";
+    position:absolute;
+    width:100%;
+    bottom:1px;
+    z-index:-1;
+    transform:scale(.9);
+    box-shadow: 0px 0px 8px 2px #000000;
+}
+
+#meetupcardimg{
+
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 200px;
+
+}
+
+.showMap{
+
+    position: relative;
+    left: -10px;
+    width: 102.238%;
+    height:500px;
+
+}
+
+.meetup-cards{
+
+
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+}
+
+.searchSidebar{
+
+    position: fixed;
+    /*margin-top: 10px;*/
+    left: 10px;
+    top:660px;
+
+    border-radius: 5px;
+    width: 240px;
+    padding: 10px;
+    background-color: white;
+
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+}
+
+.searchSidebarOut{
+
+    position: fixed;
+    /*margin-top: 10px;*/
+    left: -500px;
+    bottom:190px;
+
+    border-radius: 5px;
+    width: 240px;
+    padding: 10px;
+    background-color: white;
+
+    -webkit-animation-name: slideOutLeft;
+    animation-name: slideOutLeft;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+
+}
+
+@media (max-width: 800px) {
+
+
+    .meetup-cards-container{
+        margin-left: 0px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .searchSidebar{
+        opacity: 0;
+    }
+
+    .showMap{
+
+        position: relative;
+
+        left: -10px;
+        width: 102.8% !important;
+        height:500px;
+
+    }
+}
+
+@media (max-width: 1199px){
+
+    .showMap{
+
+        position: relative;
+        left: -10px;
+        width: 103%;
+        height:500px;
+
+    }
+
+}
+
+@media (max-width: 991px){
+    .showMap{
+
+        position: relative;
+        left: -10px;
+        width: 104.3%;
+        height:500px;
+
+    }
+}

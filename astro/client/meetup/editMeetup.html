@@ -1,0 +1,113 @@
+<template name="editMeetup">
+    {{#if currentUser}}
+        <div class="container">
+            <div class="side-container shadow-depth-3 animated slideInUp">
+                {{#each meetup}}
+                <div class="page-header">
+                    <h3><i class="fa fa-plus-square" aria-hidden="true"></i> Edit Meetup </h3>
+                </div>
+                <form class="createMeetupForm">
+
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <label for="addTitle">Title</label>
+                            <input type="text" class="form-control" id="addTitle" value="{{title}}">
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="col-md-6"><br>
+                            <label for="addLocation">Location</label>
+                            <input type="text" class="form-control" id="addLocation" value="{{location}}">
+                        </div>
+                        <div class="col-md-6"><br>
+                            <label for="datetime">Date & Time</label>
+                            <div class="input-group datetimepicker">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                <input class="set-due-date form-control" type="text" value="{{dateTime}}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-md-12"><br>
+                            <label for="addDescription">Description</label>
+                            <textarea rows="10" class="form-control" value="{{description}}" cols="50" id="addDescription"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-md-12"><br>
+
+
+                          <div class="row">
+                          {{#each task}}
+                            <div class="col-md-12">
+                                <p style="color: gray"><i class="fa fa-times-circle" id="deleteTaskButton" style="cursor: pointer" aria-hidden="true"></i>&nbsp;&nbsp; {{this.task}}
+                                    </p>
+                            </div>
+                          {{/each}}
+                          </div>
+
+
+                      <form class="new-task">
+                          <div class="form-group">
+                              <div class="row">
+                              <div class="col-md-10">
+                          <input id="newTask" name="task" class="form-control" required = "true" placeholder="Add Tasks" rows="1" cols="50">
+                              </div>
+                                  <div class="col-md-2">
+
+                                 <button type="button" id="addTaskButton" class="btn btn-success">Add Task</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+</div>
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <div class="col-md-12"><br>
+                            <label class="radio-inline"><input id="visibility_public" type="radio" name="visibility" value = "public" checked>Public</label>
+                            <label class="radio-inline"><input id="visibility_private" type="radio" name="visibility" value = "private">Private</label>
+                        </div>
+                    </div>
+
+
+                </form>
+
+                <div class="row">
+                    <div class="col-md-12"><br>
+                        <div  class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button" id="backButton" class="btn btn-default">Back</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" id="doneButton" class="btn btn-info">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<button id="backButton" type="button">Back</button>-->
+                <!--<button id="doneButton" type="button">Done</button>-->
+
+                {{/each}}
+
+            </div>
+        </div>
+
+    {{else}}
+
+        {{> welcome}}
+
+    {{/if}}
+</template>

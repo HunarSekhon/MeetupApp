@@ -1,0 +1,97 @@
+<template name="mailBox">
+
+    {{> sendMail}}
+
+    <div class="container">
+
+    <div class="side-container col-lg-10 shadow-depth-3 animated slideInUp">
+
+
+        <div class="page-header">
+            <h3><i class="fa fa-envelope" aria-hidden="true"></i> MailBox <small>Received messages</small></h3>
+        </div>
+
+        {{#if hasReceivedMail}}
+
+            <div class="list-group">
+
+                {{# each getMails}}
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">{{subject}}</h4>
+                    <p class="list-group-item-text"><strong>From: {{fromUser}}</strong></p><br>
+                    <p class="list-group-item-text">{{body}}</p>
+                </a>
+                {{/each}}
+            </div>
+        {{else}}
+            <h4 style="color: gray">Looks like your mailbox is empty..!</h4>
+
+        {{/if}}
+
+    </div>
+
+        <div style="margin-bottom: 10px" class="side-container col-lg-10 shadow-depth-3 animated slideInUp">
+
+
+            <div class="page-header">
+                <h3><i class="fa fa-paper-plane" aria-hidden="true"></i> Send Mail</h3>
+            </div>
+
+            <input id="mailboxsearch" type="text" class="form-control" placeholder="Search users...">
+            <br>
+
+
+            {{# each getSendableUsers}}
+            <div class="chip">
+                <img src="/avatars/{{avatar}}" alt="Person" width="96" height="96">
+                {{username}} <button style="border:0px solid transparent; background-color: transparent;" type="button" class="chipSend" data-toggle="modal" data-target="#mailbox-send"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </div>
+            {{/each}}
+        </div>
+
+    </div>
+</template>
+
+
+<template name="sendMail">
+
+    <div class="modal fade" id="mailbox-send" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Sending a mail to: <h4 style="color: gray"><b>{{getSendToName}}</b></h4></h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="send-form">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-file-text fa-fw"></i></span>
+                            <input class="form-control" type="text" placeholder="Subject" id="subject" required="true">
+                            <!--<label for="email">Email address</label>-->
+                            <!--<input type="email" class="form-control" id="email" placeholder="Email" required="true">-->
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <label for="comment">Message Body:</label>
+                            <textarea style="resize: none;" class="form-control" rows="5" cols="200" id="message" required="true"></textarea>
+                            <!--<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>-->
+                            <!--<input class="form-control" type="password" placeholder="Password" id="password" required="true">-->
+                            <!--<label for="password">Password</label>-->
+                            <!--<input type="password" class="form-control" id="password" placeholder="Password" required="true">-->
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> Send</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</template>

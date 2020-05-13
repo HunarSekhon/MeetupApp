@@ -1,0 +1,135 @@
+
+<template name="home">
+
+
+
+</template>
+
+
+<template name="sidebar">
+
+    <div class="sidemenu shadow-depth-3 animated slideInLeft">
+
+        <div class = "row text-center">
+        <div class="btn-group" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Q-Access
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="/my_meetups">My Meetups</a></li>
+                    <li class="disabled"><a href="#">Preferences</a></li>
+                </ul>
+            </div>
+            <button type="button" id ="createMeetup" class="btn btn-info">Create Meetup</button>
+
+
+        </div>
+        </div>
+        <br>
+        <br>
+        <div class="text-center">
+            <i class="fa fa-trophy fa-4x"></i><br>
+            <h4 style="color:gray;">Lvl:{{getLevel}}</h4>
+        </div>
+
+        <br>
+        <br>
+
+
+
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active" id="smeetups"><a href="/index_meetup"><i class="fa fa-square fa-fw" aria-hidden="true"></i> Meetups</a></li>
+            <li id="sfriendslist"><a href="/friends"><i class="fa fa-users fa-fw" aria-hidden="true"></i> Following</a></li>
+            <li  id="sleaderboards"><a href="/leaderboard"><i class="fa fa-list-ol fa-fw" aria-hidden="true"></i> Leaderboards</a></li>
+            <li id="smessageboards"><a href="{{pathFor route='messages'}}"><i class="fa fa-th-large fa-fw" aria-hidden="true"></i> Discussion Board</a></li>
+            <li id="smailbox"><a href="/mailbox"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mailbox</a></li>
+        </ul>
+
+        <br><br>
+        <hr style="width: 80%">
+        <div class="row text-center">
+            <div class="btn-group" role="group" aria-label="...">
+            <a class="btn btn-default" href="#">
+                <i class="fa fa-user-circle-o fa-2x fa-lg"></i> {{currentUser.username}}</a>
+
+
+                <a id = "logout" class="btn btn-default" href="#">
+                    <i class="fa fa-sign-out fa-2x fa-lg"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+
+</template>
+
+<template name="welcome">
+    <div class="welcome-msg shadow-depth-3 animated slideInUp">
+        <div class="row">
+                <br>
+                <h3 style="text-align: center">Welcome to <kbd>Astro</kbd></h3>
+        </div>
+
+        <div class ="row">
+
+            <br>
+          <p style="text-align: center; margin: 10px">Astro is new fun way to manage meet ups. Gain astro points as you create events and attend meet ups.Use astro points to level up and challenge your friends.</p>
+            <br>
+        </div>
+
+
+        <div class="row">
+
+        <br>
+            <div class="col-md-4 text-center">
+                <span class=" glyphicon glyphicon-th"></span><br>
+                <h4 style="text-align: center">Create meetups</h4><br>
+                <p>Create your own custom meetups and invite all your friends.
+                    The more you invite the better your meet up is!
+                </p>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <span class="glyphicon glyphicon-align-center"></span><br>
+                <h4 style="text-align: center">Add tasks</h4><br>
+                <p>Add tasks to your meetups to let everyone know what is happening at your meetup</p>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <span class="glyphicon glyphicon-star"></span><br>
+                <h4 style="text-align: center">Earn stars</h4><br>
+                <p>Earn star points and use them to buy xp boosters. Level up faster and challenge your friends</p>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <br><br>
+            <hr style="width: 80%;">
+            <h4 style="text-align: center">Login or Signup to get started</h4><br>
+            <div class="text-center">
+            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#login" role="button">Login</a>
+            <a class="btn btn-info" role="button" data-toggle="collapse" href="#signup" aria-expanded="false" aria-controls="signup">Signup</a>
+            </div>
+            <br>
+        </div>
+
+        <div class="row">
+            <br>
+            <div class="signupcontainer">
+            <div class="collapse" style="width: 80%;" id="signup">
+                <div class="well">
+                    {{> signup}}
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</template>

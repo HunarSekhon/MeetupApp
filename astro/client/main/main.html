@@ -1,0 +1,82 @@
+<head>
+  <title>Astro</title>
+</head>
+
+<body>
+
+
+{{> sAlert}}
+{{> meteorStatus}}
+
+
+</body>
+
+
+
+<template name="main_layout">
+
+    {{> login}}
+
+    <nav class="navbar navbar-default navbar-transparent " role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="color:white;font-size: 30px !important;" href="/"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>  Astro</a>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+
+                    {{#if currentUser}}
+                        <li><a href="#" class="btn btn-primary" style="margin-top: 18px;" id="nav-btn">Star points <span class="badge">{{getStarPoints}}</span></a></li>
+                        <li><a href="/my_meetups">My Meetups</a></li>
+                    {{else}}
+                        <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#login" id="nav-btn">Login</a></li>
+                    {{/if}}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/store">Store</a></li>
+                            <li class="divider"></li>
+                            {{#if currentUser}}
+                                <li><a href="#" class="logout-link">Logout</a></li>
+                            {{/if}}
+
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+    {{#if currentUser}}
+
+        <div class="container">
+        {{>sidebar}}
+        </div>
+
+    {{else}}
+
+        <div class="container">
+        {{> welcome}}
+        </div>
+
+    {{/if}}
+
+
+    {{> yield}}
+
+
+
+
+</template>

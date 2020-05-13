@@ -1,0 +1,29 @@
+
+<template name="friends">
+        <div class="container">
+            <div class="side-container shadow-depth-3 animated slideInUp">
+
+                <div class="page-header">
+                    <h3><i class="fa fa-users fa-fw" aria-hidden="true"></i> Following</h3>
+                </div>
+
+                <!--<input id="mailboxsearch" type="text" class="form-control" placeholder="Search Friends..."><br>-->
+
+            <!--<ul class="friendRowList">-->
+            <div class="row">
+                {{#each j in getFriends}}
+                    <div style="float: left">
+                    {{> friendRow id= j}}<br>
+                    </div>
+                {{/each}}
+
+            </div>
+            <!--</ul>-->
+
+
+                {{> addFriends}}
+
+            </div>
+        </div>
+</template>
+

@@ -1,0 +1,73 @@
+
+<template name="leaderboard">
+
+    <div class="container">
+
+        <div class="side-container animated slideInUp shadow-depth-3">
+
+            <header>
+                <div class="page-header">
+                    <h3><i class="fa fa-list-ol" aria-hidden="true"></i> Leaderboards <small> All time Top 5</small></h3>
+                </div>
+            </header>
+
+            <div class="text-center">
+
+                <img src="/place.png" width="100px">
+                <h3 style="color: gray">{{getTop}}</h3>
+
+            </div>
+
+            <div class="leaders">
+
+                <!--<table class="table table-hover">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th>Username</th>-->
+                        <!--<th>Email</th>-->
+                        <!--<th>Level</th>-->
+                        <!--<th>Xp</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                        <!--<td>nihas</td>-->
+                        <!--<td>nihas@nihas.com</td>-->
+                        <!--<td>3</td>-->
+                        <!--<td>1400</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+
+                <br>
+
+                <div class="list-group">
+                    {{#each getStats}}
+                    <a href="#" class="list-group-item">
+                        <img class="profilePic" src="{{getAvatarForUser userId}}" style="float:left">
+                        <h5>&nbsp;&nbsp;{{username}}</h5>
+                        <p>&nbsp; Level: {{level}}</p>
+                        <div class="progress">
+                            <div class="progress-bar animated slideInLeftProgress" role="progressbar"
+                                 aria-valuenow="{{progressBar.percent xp maxXp}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progressBar.percent xp maxXp}}%">
+                                Xp: {{xp}}
+                            </div>
+                        </div>
+                    </a>
+                    {{/each}}
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</template>
+
+
+<template name="user">
+  <div class="user">
+    <span class="name">{{username}}</span>
+    <span class="starpoints">{{score}}</span>
+  </div>
+</template>

@@ -1,0 +1,40 @@
+Router.configure({
+    layoutTemplate: 'main_layout',
+    notFoundTemplate: 'noroute',
+});
+
+Router.map(function(){
+
+    //home
+    this.route('root', {
+        path: '/',
+        template: 'home'
+    });
+
+    //home
+    this.route('home', {
+        path: '/home',
+        template: 'home'
+    });
+
+    this.route('friends', {
+        path: '/friends',
+        template: 'friends',
+    });
+
+<<<<<<< Updated upstream
+    this.route('mailbox', {
+       path: '/mailbox',
+       template: 'mailBox'
+    });
+
+    this.route('addFriends', {
+        path: '/addFriends',
+        template: 'addFriends',
+    });
+
+});
+=======
+
+});
+>>>>>>> Stashed changes

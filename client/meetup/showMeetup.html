@@ -1,0 +1,156 @@
+<template name="showMeetup">
+
+    {{#if currentUser}}
+        <div class="container">
+
+            <div class="side-container shadow-depth-3 animated slideInUp">
+
+            {{#each meetup}}
+                <div>
+                    <h3 style="float: left"> <strong>{{title}}</strong> </h3><br>
+                    <div style="float: right">
+                        {{#if currUser}}
+                            <button type="button" id="editButton" class="btn btn-default">Edit</button>
+                            {{#if isInProgress}}
+                                <button id="completeButton" class="btn btn-danger" type="button">Complete & Remove Meetup</button>
+                            {{else}}
+                                <button id="deleteButton" class="btn btn-danger" type="button">Delete Meetup</button>
+                            {{/if}}
+                        {{/if}}
+                        {{#if isNotInvited}}
+                            <button id="joinMeetupButton" class="btn btn-success" type="button">Join</button>
+                        {{else}}
+                            {{#if currUser}}
+                            {{else}}
+                                <button id="leaveMeetupButton" class="btn btn-warning" type="button">Leave</button>
+                            {{/if}}
+                        {{/if}}
+                    </div><br>
+                </div>
+                <br><hr>
+
+
+
+                <div><br>
+                    {{> map}} <br>
+                </div>
+                <div>
+                        <h4 style="color: gray">At {{dateTime}}</h4><br>
+                </div>
+                    <h4 style="color: gray">Description: </h4>
+                <div style="margin: 0 15px; text-align: justify"> {{description}} </div><br>
+
+
+
+                    <h4 style="color: gray"><strong>{{numPeopleInvited}}</strong> people attending </h4><br>
+            <div class="row">
+                        <div style="float: left">
+                            {{#each invite}}
+                                <!--<li class="list-group-item">{{this.userName}} <br> </li>-->
+                                <div class="chip" id="inviteButton" style="cursor: pointer">
+                                    <img src = "/pp.png"/> {{this.userName}}
+                                </div>
+                            {{/each}}
+                        </div><br>
+            </div><br>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Tasks</h4>
+                    {{#if currUser}}
+                        <ul class="list-group">
+                        {{#each tasks}}
+                            <li class="list-group-item">
+                            <div class="checkbox">
+                                <label><input id="taskCheckBox" type="checkbox" checked={{itIsChecked isChecked}}>{{task}}</label>
+                            </div>
+                            </li>
+                        {{/each}}
+                        </ul>
+                    {{else}}
+                        <ul class="list-group">
+                            {{#each tasks}}
+                                <li class="list-group-item">
+                                    {{#if itIsChecked isChecked}}
+                                        <strike>{{task}}</strike>
+                                    {{else}}
+                                        {{task}}
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+
+                <br>
+                </div>
+            </div>
+
+
+                <hr>
+                {{> comments_showMeetup}}
+            {{/each}}
+        </div>
+        </div>
+
+    {{else}}
+
+        <div class="container">
+            {{> welcome}}
+        </div>
+
+    {{/if}}
+
+</template>
+
+
+<template name="map">
+
+    <div class="showMap">
+        {{> googleMap name="map" options=mapOptions}}
+    </div>
+</template>
+
+
+<template name="comments_showMeetup">
+    <h3 style="margin-left: 0.5em; margin-bottom: 1em;">Comments</h3>
+
+    {{#each comments}}
+        <div style="margin-left: 2em; margin-right: 2em;">
+            <h4><strong>{{this.userName}}
+                {{#if isMyComment this.userId}}
+                    <i  id="deleteCommentButton" class="fa fa-trash-o " aria-hidden="true" style="margin-left: 5px; cursor: pointer;"></i>
+                {{/if}}
+            </strong></h4>
+
+            <p style="margin-left: 1.5em;">
+                {{this.comment}}
+                <div style="float: right">
+
+                    <!--<button id="upvoteButton" class="btn btn-success">Up</button>-->
+                    <i id="upvoteButton" class="fa fa-thumbs-up fa-2x" aria-hidden="true" style="cursor: pointer; margin-right: 10px;"></i>
+                    {{this.upvote}}
+                    <!--<button id="downvoteButton" class="btn btn-default">Down</button>-->
+                    <!--<span id="downvoteButton" class="glyphicon glyphicon-thumbs-down" style="cursor: pointer"></span>-->
+                    <i id="downvoteButton" class="fa fa-thumbs-down fa-2x" aria-hidden="true" style="cursor: pointer; margin-right: 10px;"></i>
+                    {{this.downvote}}
+                </div>
+            </p>
+            <hr>
+        </div>
+    {{/each}}
+
+
+    <form class="addCommentsForm">
+        <div class="form-group">
+            <div class="col-md-12"><br>
+                <textarea rows="3" class="form-control" value="{{comment}}" cols="45" id="addComment" placeholder="Add comment ..."></textarea>
+                <br>
+            </div>
+        </div>
+
+        <div class="btn-group" role="group" style="margin-left: 20px;">
+            <button type="button" id="addCommentButton" class="btn btn-custom">Reply</button>
+        </div>
+    </form>
+</template>

@@ -1,0 +1,13 @@
+.username-box {
+    height: 40px;
+    width: 200px;
+}
+
+.person-follow-btn {
+    float: right;
+    height: 40px;
+    font-size: large;
+    text-align: match-parent;
+    border: solid;
+    border-radius: 10px;
+}

@@ -1,0 +1,70 @@
+<template name="myMeetups">
+
+    {{#if currentUser}}
+        <div class="container">
+            <div class="meetup-cards-container">
+
+
+                {{#if isEmpty}}
+                    <div class="text-center pulse-no" style="color: white">
+                        <h3><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> You have not created any meetups</h3>
+                    </div>
+                {{else}}
+                    <div class="row">
+                    {{#each meetup}}
+                        <div class="col-lg-6 col-md-6">
+
+                            <div class="meetup-cards shadow-depth-3 animated fadeInUp">
+                                <div id="card-header" class="text-center">
+                                    <br>
+                                    <h3 style="color: gray"><strong>{{title}}</strong></h3>
+                                    <br>
+                                </div>
+
+                                {{> mapcard}}
+
+                                <div class="meetup-cards-details">
+
+                                    <div style="clear: both;margin-top: 15px;">
+                                        <h4 style="float: left">{{dateTime}}<small> PDT</small></h4>
+
+                                        <h5 style="float: right"><kbd>{{visibility}}</kbd></h5>
+                                    </div>
+
+                                    <br>
+                                    <hr style="width: 75%">
+
+                                    <div class="text-center">
+
+                                        <a class ="cardlink" id="showButton"><i class="fa fa-info fa-2x" aria-hidden="true"></i></a>
+                                        <a class ="cardlink cardlinkDelete" id="deleteButton"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
+                                        <i class="fa fa-users fa-2x" aria-hidden="true"></i> + <span class="badge">{{numPeopleInvited}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    {{/each}}
+                    </div>
+                {{/if}}
+            </div>
+
+        </div>
+
+    {{else}}
+
+    {{/if}}
+
+
+</template>
+
+<template name="mapcardPriv">
+
+    <div id="meetupcardimg">
+        {{> googleMap name="map" options=mapOptions}}
+    </div>
+
+</template>

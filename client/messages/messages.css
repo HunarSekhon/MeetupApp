@@ -1,0 +1,50 @@
+/* CSS declarations go here */
+
+
+.message {
+    box-sizing: border-box;
+    background-color: #1d386a;
+    margin-bottom: 25px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 1.4em 1.4em;
+    height: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 0px;
+}
+.btn-custom {
+    background-color: #fff;
+    color: #0a8fd5;
+    font-family: 'Muli', sans-serif;
+    font-weight: 300;
+    border-radius: 3px;
+    padding: 10px 20px;
+
+}
+/*form {*/
+    /*color: black;*/
+/*}*/
+
+.messages-container {
+    margin-top: 20px;
+}
+
+.pc-container.pc-enter {
+    color: #000;
+}
+
+.message-header{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+.fadeInDownMsg{
+
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+
+}

@@ -1,0 +1,8 @@
+
+<template name="friendRow">
+    <div class="chip">
+        <img src = "{{getAvatarStr id}}"/> {{id.profile.alias}}
+        <!--<button class="btn btn-primary btn-sm" id="person-unfollow-btn" data-value={{id._id}}>Unfollow</button>-->
+        <i style="cursor: pointer" class="fa fa-minus-square" aria-hidden="true" id="person-unfollow-btn" data-value={{id._id}}></i>
+    </div>
+</template>

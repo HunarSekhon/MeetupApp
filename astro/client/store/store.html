@@ -1,0 +1,60 @@
+<template name="store">
+
+    <div class="container">
+
+        <div class="side-container col-lg-10 shadow-depth-3 animated slideInUp">
+
+            <div class="page-header">
+                <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i> Store </h3>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h4>Buy Avatars</h4><br>
+                    {{> avatarSelector}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h4>Buy Boosters</h4><br>
+                    {{> boosters}}
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+</template>
+
+<template name="boosters">
+
+    <!--<div class="thumbnail">-->
+    <!--<img src="{{getAvatarStr id}}" alt="...">-->
+    <!--<div class="caption">-->
+    <!--<h5 style="text-align: center">{{id.profile.alias}}</h5>-->
+    <!--<button class="btn btn-primary btn-sm" style="width: 100%" id="person-follow-btn" data-value={{id._id}}>Follow</button>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="col-md-3">
+    <div class="thumbnail">
+        <img src="/booster.png" alt="...">
+        <div class="caption">
+            {{# if getIsActive}}
+           <a class="btn btn-default disabled" style="width: 100%">Active</a>
+            {{else}}
+                <a class="btn btn-info" id="buyBooster" style="width: 100%">Buy 1.5X: 35 Points</a>
+            {{/ if}}
+    </div>
+    </div>
+    </div>
+
+
+</template>

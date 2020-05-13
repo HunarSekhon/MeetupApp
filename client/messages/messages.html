@@ -1,0 +1,69 @@
+<template name="messages">
+
+  <div class="container">
+      <div class="side-container col-lg-10 shadow-depth-3 animated slideInUp">
+    <header>
+        <div class="page-header">
+            <h3><i class="fa fa-th-large" aria-hidden="true"></i> Discussion Boards </h3>
+        </div>
+    </header>
+ 
+    <form class="new-message">
+        <input type="text" class="form-control" required = "true" name="message" size="25" placeholder="Type to add new message" /><br>
+        <input type="submit" class="btn btn-default" value="Add discussion">
+        <!--<button type="button" class="remove btn btn-danger">Delete all discussions</button>-->
+    </form>
+
+      <br><h3 style="color: gray">All discussions</h3>
+      <div class="messages-container">
+          <div class="row">
+      {{#each message_list}}
+        {{> message}}
+      {{/each}}
+          </div>
+      </div>
+
+      </div>
+  </div>
+
+</template>
+
+<template name="messageDetail">
+
+  <div class="container">
+      <div class="side-container shadow-depth-3">
+      <h3 style="color: gray">Topic</h3>
+      {{#with messageDetails}}
+      <h2>{{text}}</h2>
+      {{/with}}<br>
+      <div class="comments">
+          <h4>Comments:</h4>
+          {{#each comment_list}}
+              <p>Author: <strong>{{commenter}}</strong></p>
+          <p style="margin-left: 15px">{{comment}}</p>
+          {{/each}}
+      </div>
+      
+        <hr>
+   
+      <form class="new-comment">
+          <textarea name="comment" class="form-control" required = "true" placeholder="Leave a comment" rows="5" cols="50"></textarea>
+          <br>
+          <input value="Add Comment"  class="btn btn-custom" type="submit">
+      </form>
+
+      </div>
+  </div>
+
+</template>
+
+
+<template name="message">
+    <div class="col-md-4">
+        <div class="message animated fadeInDownMsg">
+            <div class="message-header">
+                <h3 style="color: white">{{text}}</h3> </div><br>
+             <a href="{{pathFor route='messageDetail' _id=this._id }}" class="btn-custom" >View</a>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,13 @@
+.avatar-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 5px;
+}
+
+.avatar-container {
+    clear: both;
+    margin: auto;
+    width: 60%;
+    margin-bottom: 5px;
+
+}

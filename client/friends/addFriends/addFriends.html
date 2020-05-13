@@ -1,0 +1,18 @@
+<template name="addFriends">
+    <!--<div class="list-box">-->
+    <div class="page-header">
+        <h3><i class="fa fa-plus-square-o fa-fw" aria-hidden="true"></i>Follow</h3>
+    </div>
+
+    <!--<ul class="friendRowList">-->
+    <div class="row">
+            {{#each p in getAllPeople}}
+                <!--<div style="padding: 10px; float:left; margin:5px">-->
+                 <div class="col-sm4 col-md-2">
+                {{> personRow id = p}}
+                </div>
+            {{/each}}
+    </div>
+        <!--</ul>-->
+    <!--</div>-->
+</template>

@@ -1,0 +1,107 @@
+<template name="indexMeetup">
+
+    {{#if currentUser}}
+        <div class="container">
+
+            <div class="meetup-cards-container">
+
+
+                {{#if isEmpty}}
+                    <div class="text-center pulse-no" style="color: white">
+                        <h3><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> No public meetups found</h3>
+                    </div>
+                {{else}}
+                    {{> searchsidebar}}
+                    <div class="row">
+                {{#each meetup}}
+                        <div class="col-lg-6 col-md-6">
+
+                            <div class="meetup-cards shadow-depth-3 animated fadeInUp">
+                                <div id="card-header" class="text-center">
+                                    <br>
+                                    <h3 id="showButton" style="color: gray; cursor: pointer"><strong>{{title}}</strong></h3>
+                                    <br>
+                                </div>
+
+                                    {{> mapcard}}
+
+                                <div class="meetup-cards-details">
+
+                                    <div style="clear: both;margin-top: 15px;">
+                                    <h4 style="float: left">By {{author}}<small> at {{dateTime}}</small></h4>
+
+                                    <h5 style="float: right"><kbd>{{visibility}}</kbd></h5>
+                                    </div>
+
+                                    <br>
+                                    <hr style="width: 75%">
+
+                                    {{#if inProgress}}
+
+                                        <div class="text-center">
+
+                                            <!--<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>-->
+                                            <!--<a class="disabled"> In Progress</a>-->
+                                            <!--<a style="width: 97%;" class="btn btn-success btn-sm" id="showButton">-->
+                                                <!--In progress</a>-->
+                                            <span style="font-size: 15px; cursor: pointer; margin-right: 5px" id="showButton" class="label label-warning">In Progress</span>
+
+                                            <i class="fa fa-users fa-2x" aria-hidden="true"></i> + <span class="badge">{{numPeopleInvited}}</span>
+
+                                        </div>
+
+                                    {{else}}
+
+                                        <div class="text-center">
+
+                                            <a class ="cardlink" id="showButton"><i class="fa fa-info fa-2x" aria-hidden="true"></i></a>
+
+                                            {{#if isCurrUser}}
+                                                <a class ="cardlink cardlinkDelete" id="deleteButton"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
+                                            {{/if}}
+
+
+                                            <i class="fa fa-users fa-2x" aria-hidden="true"></i> + <span class="badge">{{numPeopleInvited}}</span>
+
+                                        </div>
+                                     {{/if}}
+                                </div>
+                            </div>
+
+                        </div>
+
+                {{/each}}
+                    </div>
+                {{/if}}
+            </div>
+
+            </div>
+
+    {{else}}
+
+        <div class="container">
+        {{> welcome}}
+        </div>
+
+    {{/if}}
+
+</template>
+
+<template name="mapcard">
+
+    <div id="meetupcardimg">
+        {{> googleMap name="map" options=mapOptions}}
+    </div>
+
+</template>
+
+<template name="searchsidebar">
+
+    <div id="searchside" class="searchSidebar shadow-depth-3">
+
+        <input id="meetupsSearch" type="text" class="form-control" placeholder="Search meetups...">
+
+
+    </div>
+
+</template>
